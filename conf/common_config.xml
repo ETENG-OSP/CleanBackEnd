@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="GBK"?>
+<config>
+	<!--系统配置设置--> 
+	<commonConfigKey>common</commonConfigKey>	
+	<common>
+		<systemName>ETF</systemName>
+		<timeout>0</timeout>
+		<errorMsg>true</errorMsg>
+		<subReportFilePath>//opt//app//REP</subReportFilePath>
+		<!--不能为空，可使用默认实现：et.common.loginImp.DefaultLoginCheckModule, et.common.loginImp.LicenseLoginCheckModule-->
+		<loginCheckModule>et.common.loginImp.DefaultLoginCheckModule</loginCheckModule>
+		<!--lmsSendModule：可以不配置，默认不进行任何操作-->
+		<lmsSendModule>et.common.bc.lms.LmsSendLogModule</lmsSendModule>
+		<!--后台日志实现配置--> 
+		<log>
+			<!--日志工厂实现类--> 
+			<logFactory>et.common.logging.impl.LogFactoryImpl</logFactory>
+			<!--日志具体实现类--> 
+			<logger>et.common.logging.impl.SimpleLog</logger>
+		</log>
+		<!--邮件发送配置--> 
+		<mail>
+			<!--发送邮件服务器--> 
+			<smtp>mail.e-teng.com.cn</smtp>
+			<!--发送端口--> 
+			<smtpport>25</smtpport>
+			<username>hjx@e-teng.com.cn</username>
+			<password>******</password>
+			<!--默认发件人地址--> 
+			<senderMail>hjx@e-teng.com.cn</senderMail>
+			<!--默认发件人名称--> 
+			<senderName>易腾时代</senderName>		
+		</mail>		
+		<tracepath>c:/ETtrace</tracepath>
+		<ehcache>
+			<enable>false</enable>
+			<cachenames>
+				<sysinit>true</sysinit>
+				<billcoderule>false</billcoderule>
+				<billcodemax>false</billcodemax>
+				<defrefmodel>true</defrefmodel>
+				<testwrite>false</testwrite>
+			</cachenames>
+		</ehcache>
+		<!-- MCS反馈URL：当前系统URL，logclass：本地发送日志具体实现类继承et.common.log.mcslog.McsLog -->
+		<mcs>
+			<backurl>http://localhost:8080/webservice</backurl>
+			<logclass> et.common.test.MCS.MCSLogTest</logclass>
+		</mcs>
+        
+        <!-- 手机后台 -->
+        <mobile>
+            <auth>
+                <!-- 身份验证方法，该类必须实现et.common.auth.client.Adapter -->
+                <implement>et.common.auth.client.LocalAdapter</implement>
+                <!-- 配置 -->
+                <config>{
+                    // 远程验证地址（CAS验证）范例
+                    // "remote": "192.168.0.60:8080",
+                    // 本地验证（应用内验证）范例
+                    "local": "et.common.auth.server.SimpleChecker"
+                }</config>
+            </auth>
+            <!-- 使用数据库的帐套 -->
+            <systemAccount>etframework</systemAccount>
+        </mobile>
+        
+		<!-- 与nodejs服务通过Thrift创建长连接 -->
+        <!--
+		<thrift>
+			<clientnum>2</clientnum>
+			<host>localhost</host>	
+			<port>3000</port>		
+			<lifetime>24</lifetime>
+		</thrift>
+        -->
+        
+        <!-- 快信，如不启用请注释掉 -->
+        <!-- 这里填入的是被 nginx 反向代理的路径，快信默认端口为 3200 -->
+        <!--
+        <quickMessenger>
+            <host>localhost</host>
+            <port>3200</port>
+            <resource>quickmessenger</resource>
+            <httpResource>qmhttp</httpResource>
+        </quickMessenger>
+        -->
+            
+	</common>
+	<!--压缩解压缩实现配置--> 
+	<compressors>
+		<compressor>et.common.compress.impl.RarCompressor</compressor>
+		<compressor>et.common.compress.impl.ZipCompressor</compressor>
+	</compressors>
+	<!--表情解析器--> 
+	<extractors>		
+	</extractors>
+	<!--外部执行程序配置--> 
+	<executable>
+		<rar>
+			<workingDirectory>C:/Temp</workingDirectory>
+			<file>C:/Program Files/WinRar/rar</file>
+		</rar>
+	</executable>
+	<!--定时接口调用设置--> 
+	<timers>
+
+	</timers>
+	<!--系统管理默认账套--> 
+	<root>
+		<name>系统管理</name>
+		<user_password>ywIjLXMnw/PW2</user_password>
+	</root>
+	
+	<!--应用系统账套-->
+	<etframework>
+		<name>易腾软件平台</name>
+		<database>
+			<!-- JNDI 容器连接池模式-->
+			<connectionProvider>
+				<className>et.common.database.JNDIDataSourceProvider</className>
+			</connectionProvider>
+			<!--JNDI数据源--> 
+			<JNDIProvider>
+				<name>java:comp/env/etframework</name>
+			</JNDIProvider>			
+		</database>				
+	</etframework>
+	<!--代码生成器虚拟账套--> 			
+	<codeseed>
+		<name>代码生成器</name>
+		<database>			
+			<!-- JDBC 程序内置连接池模式-->			
+			<defaultProvider>
+				<databaseType>Oracle</databaseType>
+				<host>192.168.0.33</host>
+				<databaseName>evo</databaseName>
+				<databasePort>1521</databasePort>	
+				<!-- 
+				<driver>com.mysql.jdbc.Driver</driver>
+				<serverURL>jdbc:mysql://192.168.0.36:3306/loginserver</serverURL>	
+			
+				<username>login</username>
+				<password>eteng</password>
+				 -->
+				<driver>oracle.jdbc.OracleDriver</driver>
+				<serverURL>jdbc:oracle:thin:@192.168.0.33:1521:saas</serverURL>	
+			
+				<username>etframework0704</username>
+				<password>eteng</password>
+				<minConnections>1</minConnections>
+				<maxConnections>3</maxConnections>
+				<connectionTimeout>1000</connectionTimeout>
+			</defaultProvider>				
+		</database>				
+	</codeseed>		
+		
+</config>
