@@ -144,10 +144,10 @@
 				<password>eteng</password>
 				 -->
 				<driver>oracle.jdbc.OracleDriver</driver>
-				<serverURL>jdbc:oracle:thin:@192.168.0.33:1521:saas</serverURL>	
+				<serverURL>jdbc:mysql://192.168.0.203:5258/ctrm_develop</serverURL>	
 			
-				<username>etframework0704</username>
-				<password>eteng</password>
+				<username>gbase</username>
+				<password>gbase20110531</password>
 				<minConnections>1</minConnections>
 				<maxConnections>3</maxConnections>
 				<connectionTimeout>1000</connectionTimeout>

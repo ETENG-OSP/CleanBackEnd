@@ -6,6 +6,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import net.sf.json.JSONObject;
+import et.common.bs.industry.SuperDMO;
 import et.common.demo.UserVO;
 import et.common.restful.ARestModule;
 import et.common.restful.ResponseBuilder;
@@ -34,10 +35,12 @@ public class UserAPI extends ARestModule {
 			JSONObject jo = new JSONObject();
 			jo.put("message", "保存成功");
 			jo.put("id", uvo.getUserid());
+			insertUser();
 			log.info(jo.toString());
 			//throw new BusinessException("hello");
 			return ResponseBuilder.success(jo.toString());
 		} catch (Exception e) {
+			e.printStackTrace();
 			JSONObject jo = new JSONObject();
 			jo.put("message", e.getMessage());
 			return ResponseBuilder.error(jo.toString());
@@ -50,7 +53,6 @@ public class UserAPI extends ARestModule {
 		try {
 			JSONObject jobj = JSONObject.fromObject(json);
 			// 模拟数据库操作
-
 			log.info("用户离职，id：" + jobj.getString("id"));
 			JSONObject jo = new JSONObject();
 			jo.put("message", "离职成功");
@@ -60,5 +62,14 @@ public class UserAPI extends ARestModule {
 			jo.put("message", e.getMessage());
 			return ResponseBuilder.error(jo.toString());
 		}
+	}
+	
+	private void insertUser() throws Exception{
+		UserVO vo = new UserVO();
+		vo.setUsername("qlb");
+		vo.setFlag(1);
+		
+		new SuperDMO("etframework").insert(vo);
+		
 	}
 }

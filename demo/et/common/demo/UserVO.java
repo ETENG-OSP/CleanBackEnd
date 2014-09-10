@@ -72,9 +72,8 @@ public class UserVO extends SuperVO{
 	}
 
 	@Override
-	public String getPKFieldName() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getPKFieldName() {		
+		return "userid";
 	}
 
 	@Override
@@ -85,8 +84,8 @@ public class UserVO extends SuperVO{
 
 	@Override
 	public String getTableName() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return "demo_user";
 	}
 	
 }
