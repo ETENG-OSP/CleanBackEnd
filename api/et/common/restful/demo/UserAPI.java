@@ -69,7 +69,8 @@ public class UserAPI extends ARestModule {
 		vo.setUsername("qlb");
 		vo.setFlag(1);
 		
-		new SuperDMO("etframework").insert(vo);
+		//new SuperDMO("etframework").insert(vo);
+		new SuperDMO().insert(vo);
 		
 	}
 }

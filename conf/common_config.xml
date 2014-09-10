@@ -4,6 +4,7 @@
 	<commonConfigKey>common</commonConfigKey>	
 	<common>
 		<systemName>ETF</systemName>
+		<defaultSystemAccount>etframework</defaultSystemAccount>>
 		<timeout>0</timeout>
 		<errorMsg>true</errorMsg>
 		<subReportFilePath>//opt//app//REP</subReportFilePath>
