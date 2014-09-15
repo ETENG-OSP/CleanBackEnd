@@ -1,0 +1,10 @@
+<Context distributable="true" path="/"
+	docBase="/home/gg/workspace/test/demodeploy/CleanBackEnd/WebContent" debug="0"
+	workDir="work/Catalina/localhost">
+	<Resource name="etframework" auth="Container" type="javax.sql.DataSource"
+		driverClassName="oracle.jdbc.OracleDriver" url="jdbc:oracle:thin:@192.168.0.33:1521:saas"
+		username="SAAS_0927" password="fnB+DM8=" min="2" max="20"
+		factory="org.objectweb.jotm.datasource.DataSourceFactory" />
+
+	<Transaction factory="org.objectweb.jotm.UserTransactionFactory" jotm.timeout="60" />
+</Context>
