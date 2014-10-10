@@ -2,28 +2,22 @@ package et.common.demo;
 
 import java.util.List;
 
-import javax.ws.rs.FormParam;
-
 import et.common.vo.base.SuperVO;
 
 public class UserVO extends SuperVO{
 
 	private static final long serialVersionUID = 3723922619500169848L;
-
-	@FormParam("userid")
-	private String userid;
 	
-	@FormParam("usercode")
-	private String usercode;
+	private String userid;	
 	
-	@FormParam("username")
-	private String username;
+	private String usercode;	
 	
-	@FormParam("sex")
-	private Integer sex;
+	private String username;	
 	
-	@FormParam("flag")
-	private Integer flag;
+	private Integer sex;	
+	
+	/**是否离职：0为在职，1为离职*/
+	private Integer flag=0;
 
 	public Integer getFlag() {
 		return flag;
@@ -83,9 +77,7 @@ public class UserVO extends SuperVO{
 	}
 
 	@Override
-	public String getTableName() {
-		
+	public String getTableName() {		
 		return "demo_user";
-	}
-	
+	}	
 }
