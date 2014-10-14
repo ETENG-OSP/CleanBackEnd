@@ -32,7 +32,7 @@
 		<uploads>	
 			<UploadExecutorExample>
 				<taskname>上传接口范例</taskname>
-				<classname>et.common.executor.test.UploadExecutorExample</classname>
+				<classname>et.common.executor.test.SINUploadExecutorExample</classname>
 				<filetype>exe;xls</filetype>
 				<maxsize>100</maxsize>			
 				<uploadpath></uploadpath>
